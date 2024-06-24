@@ -41,8 +41,8 @@
         <hr style="margin: var(--spacing-3) 0px;">
         <h1 style="margin-bottom: var(--spacing-2);">Try it out</h1>
         <div style="width: 100%; display: flex; gap: var(--spacing-3);">
-            <input id="url" type="text" style="background: var(--sunken); flex-grow: 1;" placeholder="URL">
-            <input id="key" type="text" style="background: var(--sunken);" placeholder="API Key">
+            <input id="url" type="text" style="background: var(--sunken); min-width: 0px; flex-grow: 1;" placeholder="URL">
+            <input id="key" type="text" style="background: var(--sunken); min-width: 0px;" placeholder="API Key">
             <button onclick="scan(document.getElementById('url').value, document.getElementById('key').value)">Scan</button>
         </div>
         <pre><code id="output">
