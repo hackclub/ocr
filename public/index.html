@@ -50,7 +50,7 @@
         </code></pre>
     </div>
     <script>
-        function scan (url) {
+        function scan (url, key) {
             document.getElementById("output").textContent = "Running...";
             fetch(`/api/scan?url=${encodeURIComponent(url)}&key=${encodeURIComponent(key)}`).then(res => res.json()).then(json => {
                 console.log(json);
