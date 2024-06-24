@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack Club OCR</title>
+    <link rel="favicon" href="/favicon.png">
+    <link rel="icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/hackclub/css@08412269bf9e02b9797b273f5bc2631124cf13cf/theme.css">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container copy" style="
+      border: 2px dashed var(--border);
+      border-radius: var(--radii-default);
+      padding: var(--spacing-4);
+      margin: var(--spacing-4);
+      text-align: center;
+
+    ">
+        <h1 class="title">Hack Club OCR</h1>
+        <h2 class="eyebrow">An OCR API for Hack Club services</h2>
+        <p class="lead">Please ping <code>@creds</code> in <code>#hq-engineering</code> if you need Hack Club OCR for an HQ&nbsp;project.</p>
+        <hr style="margin: var(--spacing-3) 0px;">
+        <h1 style="margin-bottom: var(--spacing-2);">Try it out</h1>
+        <div style="width: 100%; display: flex; gap: var(--spacing-3);">
+            <input id="url" type="text" style="background: var(--sunken); flex-grow: 1;" placeholder="URL">
+            <input id="key" type="text" style="background: var(--sunken);" placeholder="API Key">
+            <button onclick="scan(document.getElementById('url').value, document.getElementById('key').value)">Scan</button>
+        </div>
+        <pre><code id="output">
+            Output will appear here
+        </code></pre>
+    </div>
+    <script>
+        function scan (url) {
+            document.getElementById("output").textContent = "Running...";
+            fetch(`/api/scan?url=${encodeURIComponent(url)}&key=${encodeURIComponent(key)}`).then(res => res.json()).then(json => {
+                console.log(json);
+                document.getElementById("output").textContent = json.data;
+            })
+        }
+    </script>
+</body>
+
+</html>
